@@ -1,4 +1,3 @@
-# main.py
 import data_analysis as da
 import feature_processing as fp
 import model as md
