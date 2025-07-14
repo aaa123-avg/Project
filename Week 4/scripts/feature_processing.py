@@ -10,7 +10,7 @@ def preprocess_features(df):
     numeric_cols = df.select_dtypes(include=['number']).columns
     categorical_cols = df.select_dtypes(exclude=['number']).columns
 
-    # 去除不需要的列
+    # 删除价格列
     df = df.drop(columns=['Low Price', 'Mostly High', 'Mostly Low'])
 
     # 独热编码
