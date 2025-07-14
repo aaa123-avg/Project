@@ -34,7 +34,7 @@ def plot_categorical_vs_target(df):
     for col in non_numeric_cols:
         if 'High Price' in df.columns:
             grouped = df.groupby(col)['High Price'].mean().sort_values(ascending=False)
-            plt.figure(figsize=(8, 5))
+            plt.figure(figsize=(5, 3))
             plt.plot(grouped.index, grouped.values)
             plt.xlabel(col)
             plt.ylabel('High Price平均值')
