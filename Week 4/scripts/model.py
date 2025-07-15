@@ -8,7 +8,7 @@ def train_model(X_train, y_train):
     gbdt = GradientBoostingRegressor(random_state=cfg.RANDOM_STATE)
     grid = GridSearchCV(
         estimator=gbdt,
-        param_grid=cfg.PARAM_GRID,
+        param_grid=cfg.GBDT_PARAM_GRID,
         cv=5,
         scoring='neg_mean_squared_error',
         n_jobs=-1,

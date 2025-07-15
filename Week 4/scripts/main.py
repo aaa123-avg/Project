@@ -16,6 +16,9 @@ def main():
 
     model = md.train_model(X_train, y_train)
     ev.evaluate_model(model, X_train, y_train, X_test, y_test)
+    from LGBM import train_lgbm
+    lgbm_model = train_lgbm(X_train, y_train)
+    ev.evaluate_model(lgbm_model, X_train, y_train, X_test, y_test)
 
 if __name__ == "__main__":
     main()
