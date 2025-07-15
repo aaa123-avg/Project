@@ -2,6 +2,7 @@ import data_analysis as da
 import feature_processing as fp
 import model as md
 import evaluate as ev
+import lgbm_model as lgbm_module
 
 def main():
     df = da.load_data()
@@ -16,9 +17,9 @@ def main():
 
     model = md.train_model(X_train, y_train)
     ev.evaluate_model(model, X_train, y_train, X_test, y_test)
-    from LGBM import train_lgbm
-    lgbm_model = train_lgbm(X_train, y_train)
-    ev.evaluate_model(lgbm_model, X_train, y_train, X_test, y_test)
+
+    lgbm = lgbm_module.train_lgbm(X_train, y_train)
+    lgbm_module.evaluate_lgbm(lgbm, X_train, y_train, X_test, y_test)
 
 if __name__ == "__main__":
     main()

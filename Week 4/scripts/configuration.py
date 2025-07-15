@@ -10,19 +10,12 @@ GBDT_PARAM_GRID = {
     'max_depth': [5]
 }
 
+# LGBM 参数网格
 LGBM_PARAM_GRID = {
-    'learning_rate': GBDT_PARAM_GRID['learning_rate'],
-    'n_estimators': GBDT_PARAM_GRID['n_estimators'],
-    'max_depth': GBDT_PARAM_GRID['max_depth'],
+    'learning_rate': [0.1],
+    'n_estimators': [100],
+    'max_depth': [5],
     'num_leaves': [31],
-    'subsample': [1.0],
-    'colsample_bytree': [1.0]
-}
-
-XGB_PARAM_GRID = {
-    'learning_rate': GBDT_PARAM_GRID['learning_rate'],
-    'n_estimators': GBDT_PARAM_GRID['n_estimators'],
-    'max_depth': GBDT_PARAM_GRID['max_depth'],
-    'subsample': [1.0],
-    'colsample_bytree': [1.0]
+    'subsample': [0.8],
+    'colsample_bytree': [0.8]
 }

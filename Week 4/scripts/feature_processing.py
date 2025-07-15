@@ -2,6 +2,9 @@
 import pandas as pd
 import configuration as cfg
 from sklearn.model_selection import train_test_split
+import re
+import warnings
+warnings.filterwarnings('ignore')
 
 def preprocess_features(df):
     df['Date'] = pd.to_datetime(df['Date'])
@@ -24,7 +27,20 @@ def preprocess_features(df):
 
     return df
 
+
 def split_data(df):
     X = df.drop(columns=['High Price'])
     y = df['High Price']
-    return train_test_split(X, y, test_size=cfg.TEST_SIZE, random_state=cfg.RANDOM_STATE)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y,
+        test_size=cfg.TEST_SIZE,
+        random_state=cfg.RANDOM_STATE
+    )
+
+    # 清洗列名，避免 LightGBM 报错
+    clean = lambda c: re.sub(r'[^A-Za-z0-9_]+', '_', str(c))
+    X_train = X_train.rename(columns=clean)
+    X_test  = X_test.rename(columns=clean)
+
+    return X_train, X_test, y_train, y_test
