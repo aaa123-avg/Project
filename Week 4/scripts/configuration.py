@@ -19,3 +19,12 @@ LGBM_PARAM_GRID = {
     'subsample': [0.8],
     'colsample_bytree': [0.8]
 }
+
+# XGBoost 参数网格
+XGB_PARAM_GRID = {
+    'learning_rate': [0.1],
+    'n_estimators': [100],
+    'max_depth': [5],
+    'subsample': [0.8],
+    'colsample_bytree': [0.8]
+}

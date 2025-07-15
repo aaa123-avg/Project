@@ -1,8 +1,9 @@
 import data_analysis as da
 import feature_processing as fp
 import model as md
+import lgbm_model as lgbm_mod
+import xgb_model as xgb_mod
 import evaluate as ev
-import lgbm_model as lgbm_module
 
 def main():
     df = da.load_data()
@@ -15,11 +16,17 @@ def main():
     X_train, X_test, y_train, y_test = fp.split_data(df)
     print(f"训练集大小: {X_train.shape}, 测试集大小: {X_test.shape}")
 
-    model = md.train_model(X_train, y_train)
-    ev.evaluate_model(model, X_train, y_train, X_test, y_test)
+    # GBDT
+    gbdt = md.train_model(X_train, y_train)
+    ev.evaluate_model(gbdt, X_train, y_train, X_test, y_test, "GBDT")
 
-    lgbm = lgbm_module.train_lgbm(X_train, y_train)
-    lgbm_module.evaluate_lgbm(lgbm, X_train, y_train, X_test, y_test)
+    # LightGBM
+    lgbm = lgbm_mod.train_lgbm(X_train, y_train)
+    ev.evaluate_model(lgbm, X_train, y_train, X_test, y_test, "LightGBM")
+
+    # XGBoost
+    xgb = xgb_mod.train_xgb(X_train, y_train)
+    ev.evaluate_model(xgb, X_train, y_train, X_test, y_test, "XGBoost")
 
 if __name__ == "__main__":
     main()
