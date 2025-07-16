@@ -12,9 +12,9 @@
         "test_r2": 0.89
     },
     "XGBoost": {
-        "train_mse": 313.4,
-        "train_r2": 0.96,
-        "test_mse": 811.36,
-        "test_r2": 0.9
+        "train_mse": 560.48,
+        "train_r2": 0.93,
+        "test_mse": 948.27,
+        "test_r2": 0.89
     }
 }
