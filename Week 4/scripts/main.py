@@ -6,7 +6,7 @@ import xgb_model as xgb_mod
 import evaluate as ev
 import json, warnings, sys
 warnings.filterwarnings("ignore") 
-
+from visualize_line import run_show_and_save
 
 def main():
     df = da.load_data()
@@ -45,6 +45,8 @@ def main():
     with open("output.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, ensure_ascii=False, indent=4)
     print("训练集与测试集评估结果已保存至 output.json")
+
+    run_show_and_save({'LightGBM': lgbm, 'GBDT': gbdt, 'XGBoost': xgb}, X_test, y_test)
 
 if __name__ == "__main__":
     main()
