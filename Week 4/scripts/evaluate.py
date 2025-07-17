@@ -23,3 +23,5 @@ def evaluate_model(model, X_train, y_train, X_test, y_test, model_name="Model"):
         'test_mse':  test_mse,
         'test_r2':   test_r2
     }
+
+
